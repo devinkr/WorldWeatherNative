@@ -7,7 +7,11 @@ function WeatherDetails({ weather, time }) {
 	});
 
 	return (
-		<View style={styles.container}>
+		<View>
+			<Text style={styles.title}>
+				{weather.location.name}, {weather.location.region}
+			</Text>
+			<Text>{weather.location.country}</Text>
 			<Text style={styles.date}>
 				{time.toLocaleDateString([], {
 					weekday: 'short',
@@ -25,10 +29,6 @@ function WeatherDetails({ weather, time }) {
 					timeZoneName: 'short',
 				})}
 			</Text>
-			<Text style={styles.title}>
-				{weather.location.name}, {weather.location.region}{' '}
-			</Text>
-			<Text>{weather.location.country}</Text>
 			<View style={styles.flex}>
 				<View>
 					<Image
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 	date: {
+		marginTop: 15,
 		fontSize: 14,
 	},
 	temp: {
