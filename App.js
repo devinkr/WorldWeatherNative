@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -32,17 +32,21 @@ export default function App() {
 
 	if (weather !== null) {
 		return (
-			<View style={styles.container}>
-				<WeatherDetails weather={weather} time={time} />
-				<StatusBar style='auto' />
-			</View>
+			<SafeAreaView>
+				<View style={styles.container}>
+					<WeatherDetails weather={weather} time={time} />
+					<StatusBar style='auto' />
+				</View>
+			</SafeAreaView>
 		);
 	} else {
 		return (
-			<View style={styles.container}>
-				<Text>Loading...</Text>
-				<StatusBar style='auto' />
-			</View>
+			<SafeAreaView>
+				<View style={styles.container}>
+					<Text>Loading...</Text>
+					<StatusBar style='auto' />
+				</View>
+			</SafeAreaView>
 		);
 	}
 }
