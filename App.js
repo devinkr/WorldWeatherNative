@@ -1,4 +1,3 @@
-import { WEATHER_URL } from '@env';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -40,7 +39,7 @@ export default function App() {
 			} else {
 				query = coords.latitude + ',' + coords.longitude;
 			}
-			const url = `${WEATHER_URL}&q=${query}&days=3&aqi=no&alerts=no`;
+			const url = `${process.env.WEATHER_URL}&q=${query}&days=3&aqi=no&alerts=no`;
 			const data = await axios.get(url);
 			setWeather(data.data);
 		}
@@ -60,6 +59,8 @@ export default function App() {
 		return (
 			<View style={styles.container}>
 				<Text>Loading...</Text>
+				<Text>URL: {process.env.WEATHER_URL}</Text>
+				<Text>Location: {JSON.stringify(location?.coords)}</Text>
 				<StatusBar style='auto' />
 			</View>
 		);
